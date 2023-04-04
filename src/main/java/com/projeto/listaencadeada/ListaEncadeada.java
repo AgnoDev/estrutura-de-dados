@@ -37,7 +37,16 @@ public class ListaEncadeada<T> {
         return noRetorno;
     }
 
-
+    public T remove(int index) {
+        No<T> noPivor = this.getNo(index);
+        if (index == 0) {
+            refEntrada = noPivor.getProximoNo();
+            return noPivor.getConteudo();
+        }
+        No<T> noAnterior = getNo(index - 1);
+        noAnterior.setProximoNo(noPivor.getProximoNo());
+        return noPivor.getConteudo();
+    }
 
     public int size() {
         int tamanhoLista = 0;
@@ -59,7 +68,6 @@ public class ListaEncadeada<T> {
 
     public boolean isEmpty() {
         return refEntrada == null ? true : false;
-
     }
 
     private void validaIndex(int index) {
@@ -68,4 +76,15 @@ public class ListaEncadeada<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        String strRetorno = "";
+        No<T> noAuxiliar = refEntrada;
+        for(int i = 0; i < this.size(); i++){
+            strRetorno += "[No{conteudo=" + noAuxiliar.getConteudo() + "}]--->";
+            noAuxiliar = noAuxiliar.getProximoNo();
+        }
+        strRetorno += "null";
+        return strRetorno;
+    }
 }

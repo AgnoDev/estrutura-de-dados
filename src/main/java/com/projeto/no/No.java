@@ -1,20 +1,20 @@
 package com.projeto.no;
 
-public class No {
+public class No<T> {
 
-    private String conteudo;
+    private T conteudo;
     private No proximoNo;
 
-    public No(String conteudo) {
+    public No(T conteudo) {
         this.proximoNo = null;
         this.conteudo = conteudo;
     }
 
-    public String getConteudo() {
+    public T getConteudo() {
         return conteudo;
     }
 
-    public void setConteudo(String conteudo) {
+    public void setConteudo(T conteudo) {
         this.conteudo = conteudo;
     }
 

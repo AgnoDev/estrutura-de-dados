@@ -1,6 +1,6 @@
 package com.projeto.no;
 
-public class Main {
+public class MainNo {
 
     public static void main(String[] args) {
         No<String> no1 = new No<>("Nó 1");

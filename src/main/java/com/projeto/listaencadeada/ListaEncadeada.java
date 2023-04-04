@@ -38,6 +38,7 @@ public class ListaEncadeada<T> {
     }
 
 
+
     public int size() {
         int tamanhoLista = 0;
         No<T> referenciaAux = refEntrada;

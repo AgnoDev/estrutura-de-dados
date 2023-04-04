@@ -5,12 +5,12 @@ import java.util.Optional;
 public class MainFila {
 
     public static void main(String[] args) {
-        Fila minhaFila = new Fila();
+        Fila<String> minhaFila = new Fila<>();
 
         minhaFila.enqueue("1º");
-        minhaFila.enqueue(2);
-        minhaFila.enqueue(3.5);
-        minhaFila.enqueue(4f);
+        minhaFila.enqueue("2º");
+        minhaFila.enqueue("3º");
+        minhaFila.enqueue("4º");
 
         System.out.println(minhaFila);
         System.out.println(minhaFila.dequeue());

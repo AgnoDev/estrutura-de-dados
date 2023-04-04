@@ -1,14 +1,14 @@
 package com.projeto.fila;
 
-public class No {
+public class No<T> {
 
-    private Object obj;
-    private No refNo;
+    private T obj;
+    private No<T> refNo;
 
     public No() {
     }
 
-    public No(Object obj){
+    public No(T obj){
         this.refNo = null;
         this.obj = obj;
     }
@@ -17,7 +17,7 @@ public class No {
         return obj;
     }
 
-    public void setObj(Object obj) {
+    public void setObj(T obj) {
         this.obj = obj;
     }
 

@@ -1,31 +1,68 @@
 package com.projeto.listaduplamenteencadeada;
 
-public class ListaDuplamenteEncadeada<T>{
+public class ListaDuplamenteEncadeada<T> {
 
     private NoDuplo<T> primeiroNo;
     private NoDuplo<T> ultimoNo;
 
     private int tamanhoLista;
 
-    public ListaDuplamenteEncadeada(){
+    public ListaDuplamenteEncadeada() {
         this.primeiroNo = null;
         this.ultimoNo = null;
         this.tamanhoLista = 0;
     }
 
-    public T get(int index){
-        this.getNo(index).getConteudo();
+    public T get(int index) {
+        return this.getNo(index).getConteudo();
     }
 
-    private NoDuplo<T> getNo(int index){
+
+    public void add(T elemento) {
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        novoNo.setNoProximo(null);
+        novoNo.setNoPrevio(ultimoNo);
+        if (primeiroNo == null) {
+            primeiroNo = novoNo;
+        }
+        if (ultimoNo != null) {
+            ultimoNo.setNoProximo(novoNo);
+        }
+        ultimoNo = novoNo;
+        tamanhoLista++;
+    }
+
+    public void add2(int index, T elemento) {
+        NoDuplo<T> noAuxiliar = getNo(index);
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        novoNo.setNoProximo(noAuxiliar);
+
+        if (novoNo.getNoProximo() != null) {
+            novoNo.setNoPrevio(noAuxiliar.getNoPrevio());
+            novoNo.getNoProximo().setNoPrevio(novoNo);
+        } else {
+            novoNo.setNoPrevio(ultimoNo);
+            ultimoNo = novoNo;
+        }
+
+        if (index == 0) {
+            primeiroNo = novoNo;
+        } else {
+            novoNo.getNoPrevio().setNoProximo(novoNo);
+        }
+        tamanhoLista++;
+
+    }
+
+    private NoDuplo<T> getNo(int index) {
         NoDuplo<T> noAuxiliar = primeiroNo;
-        for(int i = 0; (i < index) && (noAuxiliar != null ); i++){
+        for (int i = 0; (i < index) && (noAuxiliar != null); i++) {
             noAuxiliar = noAuxiliar.getNoProximo();
         }
         return noAuxiliar;
     }
 
-    public int size(){
-        return tamanhoLista;
+    public int size() {
+        return this.tamanhoLista;
     }
 }

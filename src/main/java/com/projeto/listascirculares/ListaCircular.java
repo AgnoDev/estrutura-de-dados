@@ -79,7 +79,7 @@ public class ListaCircular<T> {
             noAuxiliar = noAuxiliar.getProximoNo();
         }
 
-        strRetorno += this.size() != 0 ? "(Retorna ao inicio!") : "[]";
+        strRetorno += this.size() != 0 ? "(Retorna ao inicio!)" : "[]";
         return strRetorno;
     }
 }
